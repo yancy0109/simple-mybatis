@@ -27,4 +27,10 @@ public interface SqlSession {
      * @param <T>
      */
     <T> T getMapper(Class<T> type);
+
+    /**
+     * 获取配置类
+     * @return  Configuration
+     */
+    Configuration getConfiguration();
 }
