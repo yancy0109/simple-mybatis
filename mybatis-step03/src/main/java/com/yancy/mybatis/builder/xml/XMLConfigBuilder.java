@@ -49,7 +49,7 @@ public class XMLConfigBuilder extends BaseBuilder {
     }
 
     private void mapperElement(Element mappers) throws Exception {
-        List<Element> mapperList = mappers.elements("mappers");
+        List<Element> mapperList = mappers.elements("mapper");
         for (Element e : mapperList) {
             // 解析处理
             String resource = e.attributeValue("resource");
