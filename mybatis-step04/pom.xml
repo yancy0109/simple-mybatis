@@ -3,17 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.yancy</groupId>
+        <artifactId>simple-mybatis</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-    <groupId>com.yancy</groupId>
-    <artifactId>simple-mybatis</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>mybatis-step01</module>
-        <module>mybatis-step02</module>
-        <module>mybatis-step03</module>
-        <module>mybatis-step04</module>
-    </modules>
+    <artifactId>mybatis-step04</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

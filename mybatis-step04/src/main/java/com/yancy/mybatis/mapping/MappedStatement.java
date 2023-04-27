@@ -5,7 +5,6 @@ import com.yancy.mybatis.session.Configuration;
 import java.util.Map;
 
 /**
- * Mapper 映射实体类
  * @author yancy0109
  */
 public class MappedStatement {
