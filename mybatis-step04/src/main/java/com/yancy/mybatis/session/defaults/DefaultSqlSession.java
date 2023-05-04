@@ -1,8 +1,11 @@
 package com.yancy.mybatis.session.defaults;
 
+import com.yancy.mybatis.mapping.Environment;
 import com.yancy.mybatis.mapping.MappedStatement;
 import com.yancy.mybatis.session.Configuration;
 import com.yancy.mybatis.session.SqlSession;
+
+import java.sql.Connection;
 
 public class DefaultSqlSession implements SqlSession {
 
@@ -23,8 +26,19 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public <T> T selectOne(String statement, Object parameter) {
-        MappedStatement mappedStatement = configuration.getMappedStatement(statement);
-        return (T) ("你被代理了! " + "\n方法: " + statement + "\n入参: " + parameter + "\n待执行SQL: " + mappedStatement.getSql());
+        try {
+
+            MappedStatement mappedStatement = configuration.getMappedStatement(statement);
+            Environment environment = configuration.getEnvironment();
+
+            Connection connection = environment.getDataSource().getConnection();
+
+            mappedStatement.getBoundSql();
+            return (T) ("你被代理了! " + "\n方法: " + statement + "\n入参: " + parameter + "\n待执行SQL: " + mappedStatement.getSql());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

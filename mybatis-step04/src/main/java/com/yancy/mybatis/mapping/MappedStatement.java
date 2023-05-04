@@ -21,6 +21,8 @@ public class MappedStatement {
 
     private String sql;
 
+    private String BoundSql boundSql;
+
     private Map<Integer, String> parameter;
 
     MappedStatement() {
