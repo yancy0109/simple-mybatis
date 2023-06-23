@@ -19,11 +19,13 @@ public interface TransactionFactory {
     Transaction newTransaction(Connection connection);
 
     /**
-     * 根据 Datasource，事务隔离级别 创建 Transaction
+     * 根据数据源和事务隔离级别创建 Transaction
      * @param dataSource
      * @param level
      * @param autoCommit
      * @return
      */
     Transaction newTransaction(DataSource dataSource, TransactionIsolationLevel level, boolean autoCommit);
+
+
 }

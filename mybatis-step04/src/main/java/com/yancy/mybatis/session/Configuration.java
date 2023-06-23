@@ -1,10 +1,10 @@
 package com.yancy.mybatis.session;
 
 import com.yancy.mybatis.binding.MapperRegistry;
-import com.yancy.mybatis.datasource.druid.DruidDataSourceFactory;
+import com.yancy.mybatis.datasource.druid.DruidDateSourceFactory;
 import com.yancy.mybatis.mapping.Environment;
 import com.yancy.mybatis.mapping.MappedStatement;
-import com.yancy.mybatis.transaction.jdbc.JdbcTransaction;
+import com.yancy.mybatis.transaction.jdbc.JdbcTransactionFactory;
 import com.yancy.mybatis.type.TypeAliasRegistry;
 
 import java.util.HashMap;
@@ -37,8 +37,10 @@ public class Configuration {
     protected final TypeAliasRegistry typeAliasRegistry = new TypeAliasRegistry();
 
     public Configuration() {
-        typeAliasRegistry.registerAlias("JDBC", JdbcTransaction.class);
-        typeAliasRegistry.registerAlias("DRUID", DruidDataSourceFactory.class);
+        // 注册 JDBC 事务类
+        typeAliasRegistry.registerAlias("JDBC", JdbcTransactionFactory.class);
+        // 注册 DRUID 数据源类
+        typeAliasRegistry.registerAlias("DRUID", DruidDateSourceFactory.class);
     }
 
     public void addMapper(Class<?> type) {
@@ -66,10 +68,11 @@ public class Configuration {
     }
 
     public Environment getEnvironment() {
-        return environment;
+        return this.environment;
     }
 
     public void setEnvironment(Environment environment) {
         this.environment = environment;
     }
+
 }

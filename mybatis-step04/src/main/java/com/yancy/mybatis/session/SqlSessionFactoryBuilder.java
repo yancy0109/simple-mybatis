@@ -19,4 +19,5 @@ public class SqlSessionFactoryBuilder {
     private SqlSessionFactory build(Configuration config) {
         return new DefaultSqlSessionFactory(config);
     }
+
 }
